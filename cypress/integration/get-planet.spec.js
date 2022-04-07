@@ -14,4 +14,14 @@ describe("GET /planets/3", function (){
             expect(res.headers[`allow`]).to.eq('GET, HEAD, OPTIONS')
         })
     });
+    it('should verify response data', function () {
+        cy.get('@planet').then(res=>{
+            cy.fixture('planet-data.json').then(data=>{
+                expect(res.body).to.deep.equal(data.body)
+                for (var key in data.body) {
+                    expect(data.body[key]).to.deep.equal(res.body[key])
+                }
+            })
+        })
+    });
 })
