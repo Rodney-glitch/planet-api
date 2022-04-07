@@ -42,4 +42,18 @@ describe("GET /planets/3", function (){
             expect(res.body.name).to.be.eq("Rodney")
         })
     });
+    it('should verify that request does not allow POST Method', function () {
+        cy.request({
+            method: 'POST',
+            url: '/planets/3',
+            body: {
+                "name": "Automated testing",
+                "Completed": true
+            },
+            failOnStatusCode: false
+        }).then(res=>{
+            expect(res.status).to.eq(405)
+            expect(res.body.detail).to.eq("Method 'POST' not allowed.")
+        })
+    });
 })
