@@ -17,10 +17,17 @@ describe("GET /planets/3", function (){
     it('should verify response data', function () {
         cy.get('@planet').then(res=>{
             cy.fixture('planet-data.json').then(data=>{
-                expect(res.body).to.deep.equal(data.body)
                 for (var key in data.body) {
                     expect(data.body[key]).to.deep.equal(res.body[key])
                 }
+            })
+        })
+    });
+    it('should verify the JSON Schema', function () {
+        cy.get('@planet').then(res=>{
+            expect(res.headers[`content-type`]).to.eq('application/json')
+            cy.fixture('planet-data.json').then(data=>{
+                expect(res.body).to.deep.equal(data.body)
             })
         })
     });
