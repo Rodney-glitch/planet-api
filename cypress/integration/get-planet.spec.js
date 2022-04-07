@@ -31,4 +31,9 @@ describe("GET /planets/3", function (){
             })
         })
     });
+    it('should verify response time does not exceed 3ms', function () {
+        cy.get('@planet').then(res=>{
+            expect(res.duration).to.not.be.greaterThan(3000)
+        })
+    });
 })
