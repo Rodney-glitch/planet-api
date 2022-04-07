@@ -16,6 +16,7 @@ describe("GET /planets/3", function (){
     });
     it('should verify response data', function () {
         cy.get('@planet').then(res=>{
+            //cy.fixture is used to connect to the test data in fixture folder
             cy.fixture('planet-data.json').then(data=>{
                 for (var key in data.body) {
                     expect(data.body[key]).to.deep.equal(res.body[key])
@@ -50,6 +51,7 @@ describe("GET /planets/3", function (){
                 "name": "Automated testing",
                 "Completed": true
             },
+            //Cypress by default fails if code is not 2xx or 3xx, adding the code below tells cypress to ignore
             failOnStatusCode: false
         }).then(res=>{
             expect(res.status).to.eq(405)
