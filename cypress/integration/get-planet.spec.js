@@ -36,4 +36,10 @@ describe("GET /planets/3", function (){
             expect(res.duration).to.not.be.greaterThan(3000)
         })
     });
+    it('should mock out the response and return a different value for the name object', function () {
+        cy.get('@planet').then(res=>{
+            res.body.name = "Rodney"
+            expect(res.body.name).to.be.eq("Rodney")
+        })
+    });
 })
