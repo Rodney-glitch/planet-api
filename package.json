@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Rodney-glitch/planet-api#readme",
   "dependencies": {
+    "@cypress/github-action": "^2.3.6",
     "cypress": "^9.5.3"
   }
 }
