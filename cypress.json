@@ -1,3 +1,5 @@
 {
-  "baseUrl": "https://swapi.dev/api"
+  "baseUrl": "https://swapi.dev/api",
+  "chromeWebSecurity": false,
+  "defaultCommandTimeout": 10000
 }
